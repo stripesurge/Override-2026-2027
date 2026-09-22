@@ -27,19 +27,19 @@ void competition_initialize() {}
 
 void autonomous() {}
 
-double gotoHeight(float height){
+double gotoHeight(float height){ //f^-1 (h)
 	float L1 = 0.0;
 	float L2 = 0.0;
 	float L3 = 1.0;
 	float gr = 1/7;
-	float point = (h-L2)/(L1+L3);
-	return gr * asinf(point);
+	float point = (height-L2)/(L1+L3);
+	return gr * asinf(point); //theta
 }
 
 void opcontrol() {
 	right_dr4b.tare_position();
 	left_dr4b.tare_position();
-	float h = 0.0
+	float h = 0.0;
 	while (true) {
 		const int forward = -master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
 		const int turn = -master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
@@ -85,20 +85,20 @@ void opcontrol() {
 			flip.toggle();
 		}
 		if (master.get_digital(pros::E_CONTROLLER_DIGITAL_Y)){
-			double offset = 20.0
+			double offset = 20.0;
 			flip.retract();
 			claw.retract();
 
 			double angle = gotoHeight(h);
-			right_d4rb.move_absolute(angle, 100);
-			left_d4rb.move_absolute(-angle, 100);
+			right_dr4b.move_absolute(angle, 100);
+			left_dr4b.move_absolute(-angle, 100);
 
 			pros::delay(500);
 			claw.extend();
 			
 			double angle = gotoHeight(h+offset);
-			right_d4rb.move_absolute(angle, 100);
-			left_d4rb.move_absolute(-angle, 100);
+			right_dr4b.move_absolute(angle, 100);
+			left_dr4b.move_absolute(-angle, 100);
 			flip.extend();
 		}
 
