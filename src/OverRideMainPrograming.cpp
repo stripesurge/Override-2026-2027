@@ -19,7 +19,11 @@ pros::adi::Pneumatics invert('B', false); // To invert which side is up
 pros::adi::Pneumatics flip('A', false); // To flip the cup and pin upright
 
 
-void initialize() {}
+void initialize() {
+
+
+	
+}
 
 void disabled() {}
 
