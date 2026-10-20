@@ -1,11 +1,12 @@
 #include "main.h"
+
+#include "OverRideMainPrograming.h"
+
 // #include "Optical_sensor.hpp"
 
 // Toggle this to switch between your student program and your test program.
 constexpr bool kUseTestCode = true;
 // constexpr bool kUseOpticalSensor = !kUseTestCode;
-
-void OverRideMainPrograming();
 
 
 void initialize() {
@@ -16,7 +17,7 @@ void initialize() {
 	// }
 
 	if (kUseTestCode) {
-		OverRideMainPrograming();
+		// OverRideMainPrograming();
 	}// else {
 	// 	initialize_student();
 	// }
